@@ -1,0 +1,13 @@
+.ProductoMin{
+  padding: 2px;
+  text-align: center;
+  margin: 2px;
+  border: 1px solid black;
+  max-width: 800px;
+}
+.prod-img-min{
+  width: 70px;
+}
+.total{
+  background: rgb( 50, 66, 168,0.3);
+}
