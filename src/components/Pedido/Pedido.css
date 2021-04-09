@@ -1,3 +1,10 @@
 .Pedido{
   max-width: 1000px;
 }
+.Pedido-header{
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.Pedido-header:hover{
+  background-color: rgba(0, 0, 0, 0.08);
+}

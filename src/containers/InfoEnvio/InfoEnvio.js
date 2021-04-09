@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck,faUser, faPhone, faEnvelope,faMapMarked, faCity} from '@fortawesome/free-solid-svg-icons';
 class InfoEnvio extends React.Component {
     constructor(props) {
       super(props);
@@ -69,9 +70,9 @@ class InfoEnvio extends React.Component {
                 <div id="form" className="ancho mx-auto">
                     <div className="input-group mb-3">
                       <div className="input-group-prepend">
-                        <span className="input-group-text" id="basic-addon1"> Nombre y apellidos: </span>
+                        <span className="input-group-text" id="basic-addon1"> <FontAwesomeIcon icon={faUser} /></span>
                       </div>
-                      <input type="text" className="form-control" placeholder="Nombre"
+                      <input type="text" className="form-control" placeholder="Nombre y apellidos"
                           onChange={(event) => this.setState({ nombre: event.target.value })}
                       />
                     </div>
@@ -79,7 +80,7 @@ class InfoEnvio extends React.Component {
                     <div className="row mb-3">
                     <div className="input-group col-md-6">
                       <div className="input-group-prepend">
-                          <span className="input-group-text" id="basic-addon1"> TLF: </span>
+                          <span className="input-group-text" id="basic-addon1"> <FontAwesomeIcon icon={faPhone} /> </span>
                         </div>
                         <input type="number" className="form-control" placeholder="666000444"
                             onChange={(event) => this.setState({ tlf: event.target.value })}
@@ -87,7 +88,7 @@ class InfoEnvio extends React.Component {
                       </div>
                       <div className="input-group col-md-6">
                         <div className="input-group-prepend">
-                          <span className="input-group-text" id="basic-addon1"> E-mail: </span>
+                          <span className="input-group-text" id="basic-addon1"> <FontAwesomeIcon icon={faEnvelope} /> </span>
                         </div>
                         <input type="email" className="form-control" placeholder="pedido@makermarket.com"
                             onChange={(event) => this.setState({ email: event.target.value })}
@@ -97,7 +98,7 @@ class InfoEnvio extends React.Component {
 
                     <div className="input-group mb-3">
                       <div className="input-group-prepend">
-                        <span className="input-group-text" id="basic-addon1"> Dirección: </span>
+                        <span className="input-group-text" id="basic-addon1"> <FontAwesomeIcon icon={faMapMarked} /></span>
                       </div>
                       <input type="text" className="form-control" placeholder="Dirección"
                           onChange={(event) => this.setState({ direccion: event.target.value })}
@@ -115,14 +116,16 @@ class InfoEnvio extends React.Component {
                       </div>
                       <div className="input-group col-md-6">
                         <div className="input-group-prepend">
-                          <span className="input-group-text" id="basic-addon1"> Localidad: </span>
+                          <span className="input-group-text" id="basic-addon1"> <FontAwesomeIcon icon={faCity} /> </span>
                         </div>
                         <input type="text" className="form-control" placeholder="Localidad"
                             onChange={(event) => this.setState({ localidad: event.target.value })}
                         />
                       </div>
                     </div>
-                    <button onClick={this.grabaPedido} className="btn btn-sm btn-primary">REALIZAR PEDIDO</button>
+                    <button onClick={this.grabaPedido} className="btn btn-sm btn-success">
+                      <FontAwesomeIcon icon={faCheck} /> REALIZAR PEDIDO
+                    </button>
                     {redireccion}
                 </div>
             </>

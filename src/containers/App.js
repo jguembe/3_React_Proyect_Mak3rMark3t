@@ -9,6 +9,8 @@ import Pedidos from '../containers/Pedidos/Pedidos';
 import Home from '../containers/Home/Home';
 import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faShoppingCart, faList, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 class App extends React.Component {
   constructor(props) {
@@ -92,13 +94,13 @@ class App extends React.Component {
               <nav className="">
                 <ul className="nav justify-content-center">
                   <li className="nav-item">
-                    <Link to="/" className="nav-link">Home</Link>
+                    <Link to="/" className="nav-link"><FontAwesomeIcon icon={faHome} /> Home</Link>
                   </li>
                   <li className="nav-item">
-                    <Link to="/realizarpedido" className="nav-link">Carrito {prodbadge}</Link>
+                    <Link to="/realizarpedido" className="nav-link"><FontAwesomeIcon icon={faShoppingCart} /> Carrito {prodbadge}</Link>
                   </li>
                   <li className="nav-item">
-                    <Link to="/pedidos" className="nav-link">Pedidos</Link>
+                    <Link to="/pedidos" className="nav-link"><FontAwesomeIcon icon={faList} /> Pedidos</Link>
                   </li>
                 </ul>
               </nav>

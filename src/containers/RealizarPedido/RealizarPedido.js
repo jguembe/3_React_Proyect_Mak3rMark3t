@@ -3,7 +3,8 @@ import ProductoMin from '../../components/ProductoMin/ProductoMin';
 import '../../components/ProductoMin/ProductoMin.css';
 
 import { Link } from 'react-router-dom';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 class RealizarPedido extends React.Component {
     constructor(props) {
@@ -49,7 +50,7 @@ class RealizarPedido extends React.Component {
                     </div>
                 </div>
                 <div className="my-3 py-3">
-                    <Link to="/infoenvio" className="btn btn-primary">Continuar</Link>
+                    <Link to="/infoenvio" className="btn btn-primary"><FontAwesomeIcon icon={faArrowRight} />  Continuar</Link>
                 </div>
             </>
         )

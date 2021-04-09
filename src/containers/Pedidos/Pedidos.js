@@ -2,8 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import Pedido from '../../components/Pedido/Pedido';
-import ModalDialog from 'react-bootstrap/ModalDialog';
-import ModalHeader from 'react-bootstrap/ModalHeader';
+import {ModalDialog, ModalHeader} from 'react-bootstrap';
 import ModalTitle from 'react-bootstrap/ModalTitle';
 import ModalBody from 'react-bootstrap/ModalBody';
 import ModalFooter from 'react-bootstrap/ModalFooter';
@@ -20,6 +19,7 @@ class Pedidos extends React.Component {
         show: false,
         confirm: false,
         listapedidos: [],
+        mostrarinfo: [],
       }
     }
 
@@ -28,15 +28,23 @@ class Pedidos extends React.Component {
       axios.get('https://dsm-proyecto-default-rtdb.firebaseio.com/pedidos.json')
           .then(function (response) {
               const pedidos = [];
+              const mostrar = [];
               for (let key in response.data) {
                   pedidos.push({
                       ...response.data[key],
                       idb: key
                   });
               }
+              mostrar.push(false);
               console.log('Pedidos recibidos.');
-              console.log(pedidos);
-              self.setState({ listapedidos: pedidos });
+              self.setState({
+                idelim: null,
+                idbelim: null,
+                show: false,
+                confirm: false,
+                listapedidos: pedidos,
+                mostrarinfo: mostrar,
+              });
           })
     }
     componentDidMount() {
@@ -51,18 +59,22 @@ class Pedidos extends React.Component {
           alert("PEdido borrado");
         });
       let pedidos = [...this.state.listapedidos];
+      let mostrar = [...this.state.mostrarinfo];
       pedidos.splice(this.state.idelim, 1);
+      mostrar.splice(this.state.idelim, 1);
       this.setState({
         idelim: null,
         idbelim: null,
         show:false,
         confirm:false,
-        listapedidos: pedidos
+        listapedidos: pedidos,
+        mostrarinfo: mostrar,
       });
     }
 
     showmodal = (statex,id,idb) => {
       let pedidos = [...this.state.listapedidos];
+      let mostrar = [...this.state.mostrarinfo];
       let idx = id;
       let idbx = idb;
       if(!statex){
@@ -74,10 +86,25 @@ class Pedidos extends React.Component {
         idbelim: idbx,
         show:statex,
         confirm:false,
-        listapedidos: pedidos
+        listapedidos: pedidos,
+        mostrarinfo: mostrar,
       });
     }
 
+    showpedido = (id) => {
+      let pedidos = [...this.state.listapedidos];
+      let mostrar = [...this.state.mostrarinfo];
+      mostrar[id] = !mostrar[id];
+
+      this.setState({
+        idelim: null,
+        idbelim: null,
+        show:false,
+        confirm:false,
+        listapedidos: pedidos,
+        mostrarinfo: mostrar,
+      });
+    }
 
     render() {
         let pedidos = null;
@@ -89,6 +116,8 @@ class Pedidos extends React.Component {
                             key={id}
                             pedido={pedido}
                             borrar={() => this.showmodal(true,id,pedido.idb)}
+                            mostrar={this.state.mostrarinfo[id]}
+                            showpedido={() => this.showpedido(id)}
                         />
               })}
             </div>
