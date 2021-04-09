@@ -53,7 +53,8 @@ class Pedidos extends React.Component {
     }
 
     borrarpedido = () => {
-      axios.delete('https://dsm-proyecto-default-rtdb.firebaseio.com/pedidos/' + this.state.idbelim + '.json')
+      var self = this;
+      axios.delete('https://dsm-proyecto-default-rtdb.firebaseio.com/pedidos/' + self.state.idbelim + '.json')
         .then(response => {
           console.log(response);
           alert("PEdido borrado");

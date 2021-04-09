@@ -1,12 +1,14 @@
 import React from 'react';
 import './Pedido.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 class Pedido extends React.Component {
     render() {
         let infoPedido = null;
-        let flecha = ">";
+        let flecha = (<FontAwesomeIcon icon={faAngleRight} />);
         if(this.props.mostrar){
-          flecha = ""
+          flecha = (<FontAwesomeIcon icon={faAngleDown} />);
           let datos = {
             nombre: '',
             tlf: '',
@@ -33,7 +35,7 @@ class Pedido extends React.Component {
                   Dirección: {datos.direccion}<br/>
                   CP: {datos.cp}<br/>
                   Localidad: {datos.localidad}<br/>
-
+                  <button className="btn btn-sm btn-outline-danger ml-auto" onClick={this.props.borrar}>Eliminar</button>
                 </div>
               </div>
           )
@@ -42,19 +44,17 @@ class Pedido extends React.Component {
             <>
               <div className="Pedido card mx-auto">
                 <a onClick={this.props.showpedido}>
-                  <div className="Pedido-header card-header clickable">
+                  <div className="Pedido-header card-header">
                     <div className="row">
-                      <h5 className="mb-0 ml-0">
-                        {this.props.pedido.idb}
+
+                      <h5 className="mb-0 ml-2">
+                        <span className="mx-3">{flecha}</span> {this.props.pedido.idb}
                       </h5>
-                      <button className="btn btn-sm btn-outline-danger ml-auto" onClick={this.props.borrar}>Eliminar</button>
 
                     </div>
                   </div>
                 </a>
-
                 {infoPedido}
-
               </div>
             </>
         )
