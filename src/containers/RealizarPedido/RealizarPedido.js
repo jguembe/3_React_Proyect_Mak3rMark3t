@@ -13,7 +13,7 @@ class RealizarPedido extends React.Component {
     render() {
 
         let total = 0;
-
+        let boton = (<Link to="/infoenvio" className="btn btn-primary"><FontAwesomeIcon icon={faArrowRight} />  Continuar</Link>);
         let listaproductos = (
           <div>
             {this.props.cantidades.map((cantidad, id) => {
@@ -29,7 +29,11 @@ class RealizarPedido extends React.Component {
 
             })}
           </div>
+
         )
+        if (total==0){
+          boton = (<Link className="btn btn-secondary disabled"><FontAwesomeIcon icon={faArrowRight} />  Continuar</Link>);
+        }
 
         return (
             <>
@@ -50,7 +54,7 @@ class RealizarPedido extends React.Component {
                     </div>
                 </div>
                 <div className="my-3 py-3">
-                    <Link to="/infoenvio" className="btn btn-primary"><FontAwesomeIcon icon={faArrowRight} />  Continuar</Link>
+                  {boton}
                 </div>
             </>
         )
