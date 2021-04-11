@@ -65,9 +65,11 @@ class App extends React.Component {
     let cantidades = [...this.state.cantidades];
     let listaproductos = [...this.state.listaproductos];
     let numprod = this.state.numprod;
-    if(cantidades[id]>0)
+    if(cantidades[id]>0){
       cantidades[id]--;
       numprod--;
+    }
+
     this.setState({
       cantidades: cantidades,
       listaproductos: listaproductos,
