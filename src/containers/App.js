@@ -125,7 +125,9 @@ class App extends React.Component {
                     />
                 </Route>
                 <Route path="/pedidos">
-                  <Pedidos />
+                  <Pedidos
+                    listaproductos={this.state.listaproductos}
+                  />
                 </Route>
                 <Route path="/">
                   <Home

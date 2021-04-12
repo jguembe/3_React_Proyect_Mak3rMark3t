@@ -37,6 +37,7 @@ class Pedidos extends React.Component {
               }
               mostrar.push(false);
               console.log('Pedidos recibidos.');
+              console.log(pedidos);
               self.setState({
                 idelim: null,
                 idbelim: null,
@@ -119,6 +120,7 @@ class Pedidos extends React.Component {
                             borrar={() => this.showmodal(true,id,pedido.idb)}
                             mostrar={this.state.mostrarinfo[id]}
                             showpedido={() => this.showpedido(id)}
+                            listaproductos = {this.props.listaproductos}
                         />
               })}
             </div>
@@ -129,7 +131,10 @@ class Pedidos extends React.Component {
         return (
             <>
                 <h1>PEDIDOS</h1>
-                {pedidos}
+                <div className="my-5">
+                  {pedidos}
+                </div>
+
 
                 <Modal show={this.state.show} onHide={() => this.showmodal(false)} animation={true} centered>
                   <Modal.Header closeButton>
