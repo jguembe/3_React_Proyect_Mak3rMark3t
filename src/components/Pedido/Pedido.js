@@ -5,6 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 class Pedido extends React.Component {
+  constructor(props) {
+    super(props);
+
+  }
     render() {
         let infoPedido = null;
         let listaproductos = null;
@@ -83,20 +87,25 @@ class Pedido extends React.Component {
 
               </div>
               </div>
+
           )
+        }
+        let fecha = null;
+        if (this.props.pedido.fecha !=null){
+          fecha = new Date(this.props.pedido.fecha).toLocaleDateString('es');
         }
         return (
             <>
               <div className="Pedido card mx-auto">
                 <a onClick={this.props.showpedido}>
                   <div className="Pedido-header card-header">
-                    <div className="row">
-
-                      <h5 className="mb-0 ml-2">
-                        <span className="mx-3">{flecha}</span> {this.props.pedido.idb}
-                      </h5>
-
-                    </div>
+                      <div className="d-flex justify-content-between">
+                        <div className="">{flecha}
+                          <span className="mx-3">{fecha}</span>
+                        </div>
+                        <div className="">{this.props.pedido.infoEnvio.nombre}</div>
+                        <div className=""></div>
+                      </div>
                   </div>
                 </a>
                 {infoPedido}

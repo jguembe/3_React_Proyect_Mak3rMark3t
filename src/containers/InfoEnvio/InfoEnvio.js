@@ -19,6 +19,7 @@ class InfoEnvio extends React.Component {
         showmsg: false,
         msg: '',
         numprod: 0,
+
       }
     }
     componentWillMount(){
@@ -45,6 +46,7 @@ class InfoEnvio extends React.Component {
 
     grabaPedido = () => {
         const data = {
+          fecha: Date.now(),
           infoEnvio: {
             nombre: this.state.nombre,
             tlf: parseInt(this.state.tlf),
