@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import Producto from '../../components/Producto/Producto';
@@ -9,10 +8,6 @@ import { faTrash, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 class Home extends React.Component {
     constructor(props) {
       super(props);
-    }
-
-    componentDidMount() {
-      console.log('<HOME> se ha montado');
     }
 
     render() {

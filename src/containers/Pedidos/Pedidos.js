@@ -36,8 +36,6 @@ class Pedidos extends React.Component {
                   });
               }
               mostrar.push(false);
-              console.log('Pedidos recibidos.');
-              console.log(pedidos);
               self.setState({
                 idelim: null,
                 idbelim: null,
@@ -49,7 +47,6 @@ class Pedidos extends React.Component {
           })
     }
     componentDidMount() {
-      console.log('<Pedidos> se ha montado');
       this.getorders();
     }
 
@@ -57,8 +54,7 @@ class Pedidos extends React.Component {
       var self = this;
       axios.delete('https://dsm-proyecto-default-rtdb.firebaseio.com/pedidos/' + self.state.idbelim + '.json')
         .then(response => {
-          console.log(response);
-          alert("PEdido borrado");
+          alert("Pedido eliminado correctamente.");
         });
       let pedidos = [...this.state.listapedidos];
       let mostrar = [...this.state.mostrarinfo];

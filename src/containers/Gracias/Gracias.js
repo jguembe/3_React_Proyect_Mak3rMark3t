@@ -2,12 +2,6 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
 class Gracias extends React.Component {
-    constructor(props) {
-      super(props);
-    }
-    componentDidMount() {
-      console.log('<Gracias> se ha montado');
-    }
 
     render() {
 

@@ -35,7 +35,6 @@ class App extends React.Component {
                 });
                 cantidad1.push(0);
             }
-            console.log('Productos recibidos.');
             self.setState({
               cantidades: cantidad1,
               listaproductos: producto,
@@ -45,7 +44,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('<HOME> se ha montado');
     this.getproducts();
   }
 

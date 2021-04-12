@@ -31,7 +31,6 @@ class InfoEnvio extends React.Component {
           if(cantidad>0){
             numprod++;
              idb = this.props.listaproductos[id].idb;
-            console.log('X: '+idb+' : '+cantidad);
             cantidades.push({
                 idb: idb,
                 cantidad: cantidad,
@@ -42,10 +41,6 @@ class InfoEnvio extends React.Component {
         numprod: numprod,
         cantidades: cantidades
       });
-    }
-
-    componentDidMount() {
-      console.log('<InfoEnvio> se ha montado');
     }
 
     grabaPedido = () => {
@@ -196,8 +191,6 @@ class InfoEnvio extends React.Component {
             </>
           )
         }
-
-
 
 
         return (
