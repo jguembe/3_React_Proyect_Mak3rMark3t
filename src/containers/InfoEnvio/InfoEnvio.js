@@ -18,7 +18,30 @@ class InfoEnvio extends React.Component {
         cantidades: [],
         showmsg: false,
         msg: '',
+        numprod: 0,
       }
+    }
+    componentWillMount(){
+      let numprod = 0;
+      let cantidades = [];
+      // Preparar cantidades con su idb correspondiente
+      this.props.cantidades.map((cantidad, id) => {
+
+        let idb = null;
+          if(cantidad>0){
+            numprod++;
+             idb = this.props.listaproductos[id].idb;
+            console.log('X: '+idb+' : '+cantidad);
+            cantidades.push({
+                idb: idb,
+                cantidad: cantidad,
+            });
+          }
+      })
+      this.setState({
+        numprod: numprod,
+        cantidades: cantidades
+      });
     }
 
     componentDidMount() {
@@ -82,24 +105,21 @@ class InfoEnvio extends React.Component {
     render() {
         let mensaje = null;
         let redireccion = null;
-        let numprod = 0;
         let contenido = null;
-
-        // Preparar cantidades con su idb correspondiente
-        this.props.cantidades.map((cantidad, id) => {
-          let idb = null;
-            if(cantidad>0){
-              numprod++;
-               idb = this.props.listaproductos[id].idb;
-              console.log('X: '+idb+' : '+cantidad);
-              this.state.cantidades.push({
-                  idb: idb,
-                  cantidad: cantidad,
-              });
-            }
-        })
-
-        if (numprod>0){
+        if(this.state.grabado){
+            redireccion = (<div><Redirect to="/gracias" /></div>);
+        }
+        if(this.state.showmsg){
+          if(this.state.msg!=''){
+            mensaje = (
+              <div className="alert alert-danger alert-dismissible fade show" role="alert">
+                  Por favor rellene los siguientes campos:<br/>
+                  <strong>{this.state.msg}</strong>
+              </div>
+            )
+          }
+        }
+        if (this.state.numprod>0){
           contenido = (
             <div id="form" className="ancho mx-auto">
                 {mensaje}
@@ -161,7 +181,7 @@ class InfoEnvio extends React.Component {
                 <button onClick={this.comprobar} className="btn btn-sm btn-success">
                   <FontAwesomeIcon icon={faCheck} /> REALIZAR PEDIDO
                 </button>
-                {redireccion}
+
             </div>
           )
         }else {
@@ -177,24 +197,14 @@ class InfoEnvio extends React.Component {
           )
         }
 
-        if(this.state.grabado){
-            redireccion = (<div><Redirect to="/gracias" /></div>);
-        }
-        if(this.state.showmsg){
-          if(this.state.msg!=''){
-            mensaje = (
-              <div className="alert alert-danger alert-dismissible fade show" role="alert">
-                  Por favor rellene los siguientes campos:<br/>
-                  <strong>{this.state.msg}</strong>
-              </div>
-            )
-          }
-        }
+
+
 
         return (
             <>
                 <h1>Información de envio</h1>
                 {contenido}
+                {redireccion}
             </>
         )
     }

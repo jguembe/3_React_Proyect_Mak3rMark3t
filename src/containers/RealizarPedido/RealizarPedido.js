@@ -21,7 +21,6 @@ class RealizarPedido extends React.Component {
                   total += this.props.cantidades[id]*this.props.listaproductos[id].precio ;
                   return <ProductoMin
                             key={id}
-                            myid={id}
                             producto={this.props.listaproductos[id]}
                             cantidadX={this.props.cantidades[id]}
                         />
@@ -32,7 +31,7 @@ class RealizarPedido extends React.Component {
 
         )
         if (total==0){
-          boton = (<Link className="btn btn-secondary disabled"><FontAwesomeIcon icon={faArrowRight} />  Continuar</Link>);
+          boton = (<button className="btn btn-secondary disabled"><FontAwesomeIcon icon={faArrowRight} />  Continuar</button>);
         }
 
         return (
